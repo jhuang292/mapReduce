@@ -11,12 +11,15 @@ mr = MapReduce.MapReduce()
 # Do not modify above this line
 
 # Implement the MAP function
-def mapper(# Provide the necessary inputs):
-    # YOUR CODE GOES HERE
+def mapper(record):
+    key = record[0]
+    value = record[1]
+    mr.emit_intermediate(key, value)
+    
 
 # Implement the REDUCE function
-def reducer(# Provide the necessary inputs):
-    # YOUR CODE GOES HERE
+def reducer(key, list_of_values):
+    mr.emit((key, len(list_of_values)))
 
 # Do not modify below this line
 # =============================
